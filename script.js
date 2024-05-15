@@ -81,7 +81,7 @@ function update() {
 
 function changeVolume() {
     song.volume = volumeSlider.value / 100;
-    console.log(volumeSlider.value);
+    //console.log(volumeSlider.value);
     console.log(song.length);
 
 }
@@ -91,7 +91,7 @@ function changeVolume() {
 playButton.addEventListener('click', playSong);
 nextButton.addEventListener('click', nextSong);
 previousButton.addEventListener('click', previousSong);
-volumeSlider.addEventListener('change', changeVolume);
+volumeSlider.addEventListener('input', changeVolume);
 
 
 update();
