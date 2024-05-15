@@ -2,14 +2,10 @@ const playButton = document.getElementById('play');
 const nextButton = document.getElementById('next');
 const previousButton = document.getElementById('previous');
 const songCover = document.getElementById('cover');
+const volumeSlider = document.getElementById('slider');
 
 //Song list
 const MusicList = [
-    {
-        path: 'assets/sounds/test.wav',
-        cover: 'assets/img/cover_placeholder.png',
-        name: 'Test'
-    },
     {
         path: 'assets/sounds/track_1.mp3',
         cover: 'assets/img/cover_track1.png',
@@ -30,6 +26,7 @@ const MusicList = [
 let isPlaying = false;
 let MusicListIndex = 0;
 let song = new Audio('assets/sounds/track_1.mp3');
+song.volume = volumeSlider.value / 100;
 
 
 //Functions
@@ -37,7 +34,6 @@ function playSong() {
     if (isPlaying != true) {
         isPlaying = true;
         playButton.classList.replace('fa-play', 'fa-pause');
-        song.volume = 0.3;
         song.play();
     }
     else {
@@ -83,9 +79,19 @@ function update() {
     console.log(song.src);
 }
 
+function changeVolume() {
+    song.volume = volumeSlider.value / 100;
+    console.log(volumeSlider.value);
+    console.log(song.length);
+
+}
+
 
 //Event handler
 playButton.addEventListener('click', playSong);
 nextButton.addEventListener('click', nextSong);
 previousButton.addEventListener('click', previousSong);
+volumeSlider.addEventListener('change', changeVolume);
+
+
 update();

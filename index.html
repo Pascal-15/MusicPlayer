@@ -12,15 +12,18 @@
     <div class="container">
       <div class="container-cover">
         <img src="assets/img/cover_placeholder.png" class="selected-cover" id="cover" />
-        <label for="selected-cover"></label>
       </div>
-      <div class="container-controls">
+      <div class="container-options">
+        <div class="container-controls">
           <i class="fa-solid fa-backward-step" id="previous"></i>
           <i class="fa-solid fa-play" id="play"></i>
           <i class="fa-solid fa-forward-step" id="next"></i>
       </div>
+      <div class="container-volume">
+        <input type="range" class="slider-volume" id="slider" value="30" min="0" max="100" />
+      </div>
+      </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
