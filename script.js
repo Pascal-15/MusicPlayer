@@ -2,6 +2,7 @@ const playButton = document.getElementById('play');
 const nextButton = document.getElementById('next');
 const previousButton = document.getElementById('previous');
 const songCover = document.getElementById('cover');
+const songTitle = document.getElementById('song-title');
 const volumeSlider = document.getElementById('slider');
 
 //Song list
@@ -74,7 +75,9 @@ function previousSong() {
 }
 function update() {
     songCover.src = MusicList[MusicListIndex].cover;
+    songTitle.textContent = MusicList[MusicListIndex].name;
     song.src = MusicList[MusicListIndex].path;
+
     console.log(songCover.src);
     console.log(song.src);
 }
