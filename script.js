@@ -4,6 +4,7 @@ const previousButton = document.getElementById('previous');
 const songCover = document.getElementById('cover');
 const songTitle = document.getElementById('song-title');
 const volumeSlider = document.getElementById('slider');
+const progressBar = document.getElementById('song-time');
 
 //Song list
 const MusicList = [
@@ -39,7 +40,6 @@ function playSong() {
     }
     else {
         pauseSong();
-        isPlaying = false;
     }
 }
 function pauseSong()  {
@@ -84,9 +84,21 @@ function update() {
 
 function changeVolume() {
     song.volume = volumeSlider.value / 100;
-    //console.log(volumeSlider.value);
     console.log(song.length);
 
+}
+
+function updateBar() {
+    progressBar.max = song.duration;
+    progressBar.value = song.currentTime;
+}
+
+function changeSongTime(x) {
+    const width = progressBar.clientWidth;
+    console.log('Width: ' + width);
+    const click = x.offsetX;
+    console.log('Click: ' + click);
+    song.currentTime = (click / width) * song.duration;
 }
 
 
@@ -95,6 +107,9 @@ playButton.addEventListener('click', playSong);
 nextButton.addEventListener('click', nextSong);
 previousButton.addEventListener('click', previousSong);
 volumeSlider.addEventListener('input', changeVolume);
+song.addEventListener('ended', pauseSong);
+song.addEventListener('timeupdate', updateBar)
+progressBar.addEventListener('click', changeSongTime);
 
 
 update();
